@@ -33,9 +33,7 @@ class HomePageView extends StatelessWidget {
           countdownProvider.StartStopTimer();
         },
         child: Icon(
-          countdownProvider.isRunnig
-              ? Icons.pause_circle
-              : Icons.play_arrow_outlined,
+          countdownProvider.isRunnig ? Icons.pause : Icons.play_arrow_outlined,
         ),
       ),
     );
@@ -51,15 +49,16 @@ class _CounterLabel extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
-          Icon(
+        children: [
+          const Icon(
             Icons.timer_outlined,
             color: Colors.blue,
             size: 60.0,
           ),
           Text(
-            '00:01',
-            style: TextStyle(fontSize: 50.0),
+            context.select(
+                (CountDownProvider counteDown) => counteDown.timeLeftString),
+            style: const TextStyle(fontSize: 50.0),
           ),
         ],
       ),
