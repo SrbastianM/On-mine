@@ -22,7 +22,9 @@ class HomePageView extends StatelessWidget {
         title: const Text('CountDown'),
         actions: [
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              countdownProvider.setNewDuration(const Duration(seconds: 1000));
+            },
             icon: const Icon(Icons.restart_alt_outlined),
           )
         ],
