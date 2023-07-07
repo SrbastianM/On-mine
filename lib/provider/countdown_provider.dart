@@ -32,6 +32,13 @@ class CountDownProvider extends ChangeNotifier {
     });
   }
 
+  void setNewDuration(Duration newDuration) {
+    duration = newDuration;
+    _tickSubscription?.cancel();
+    isRunnig = false;
+    notifyListeners();
+  }
+
   String get timeLeftString {
     // Estamos redondeando los segundos en minutos.
     final minutes =
